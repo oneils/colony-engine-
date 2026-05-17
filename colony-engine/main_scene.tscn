@@ -2,5 +2,37 @@
 
 [ext_resource type="Script" uid="uid://fj61be171d30" path="res://main_scene.gd" id="1_0f027"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f027"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c62f"]
+size = Vector2(23.5, 1110.75)
+
 [node name="mainScene" type="Node2D" unique_id=453189754]
 script = ExtResource("1_0f027")
+
+[node name="walls" type="Node2D" parent="." unique_id=1862350757]
+
+[node name="TopWall" type="RigidBody2D" parent="walls" unique_id=406709445]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/TopWall" unique_id=1011457144]
+position = Vector2(957.5, -10)
+shape = SubResource("RectangleShape2D_0f027")
+
+[node name="LeftWall" type="RigidBody2D" parent="walls" unique_id=1399215258]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/LeftWall" unique_id=1434623852]
+position = Vector2(-12, 540.625)
+shape = SubResource("RectangleShape2D_2c62f")
+
+[node name="RightWall" type="RigidBody2D" parent="walls" unique_id=1612429607]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/RightWall" unique_id=1802996659]
+position = Vector2(1932, 537.75)
+shape = SubResource("RectangleShape2D_2c62f")
+
+[node name="BottomWall" type="RigidBody2D" parent="walls" unique_id=200720931]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/BottomWall" unique_id=1577192278]
+position = Vector2(960, 1086)
+shape = SubResource("RectangleShape2D_0f027")
