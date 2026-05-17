@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cqh4vv60fupxg"]
+
+[ext_resource type="Script" uid="uid://ctr288v8hd2p8" path="res://components/npc_layer/npc_layer.gd" id="1_3xeb5"]
+
+[node name="NPCLayer" type="Node2D" unique_id=2083722596]
+script = ExtResource("1_3xeb5")

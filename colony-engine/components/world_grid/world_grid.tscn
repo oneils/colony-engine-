@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ytihpjkm1w62"]
+
+[ext_resource type="Script" uid="uid://fmt6rte4h1q" path="res://components/world_grid/world_grid.gd" id="1_yyg2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ep1"]
+size = Vector2(1920, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbjwy"]
+size = Vector2(23.5, 1110.75)
+
+[node name="WorldGrid" type="Node2D" unique_id=975609513]
+script = ExtResource("1_yyg2q")
+
+[node name="walls" type="Node2D" parent="." unique_id=163430853]
+
+[node name="TopWall" type="RigidBody2D" parent="walls" unique_id=1320215608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/TopWall" unique_id=810955299]
+position = Vector2(957.5, -10)
+shape = SubResource("RectangleShape2D_j5ep1")
+
+[node name="LeftWall" type="RigidBody2D" parent="walls" unique_id=1897143511]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/LeftWall" unique_id=1079530305]
+position = Vector2(-12, 540.625)
+shape = SubResource("RectangleShape2D_fbjwy")
+
+[node name="RightWall" type="RigidBody2D" parent="walls" unique_id=1223755248]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/RightWall" unique_id=349555011]
+position = Vector2(1932, 537.75)
+shape = SubResource("RectangleShape2D_fbjwy")
+
+[node name="BottomWall" type="RigidBody2D" parent="walls" unique_id=1950554082]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/BottomWall" unique_id=171695729]
+position = Vector2(960, 1086)
+shape = SubResource("RectangleShape2D_j5ep1")
