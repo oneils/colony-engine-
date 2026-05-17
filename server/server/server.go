@@ -27,6 +27,10 @@ func (s *Server) routes() chi.Router {
 			r.Get("/", s.npscStateHandler)
 		})
 
+		r.Route("/game/config", func(r chi.Router) {
+			r.Get("/", s.fetchGameCfg)
+		})
+
 		r.Get("/", s.indexHandler)
 	})
 

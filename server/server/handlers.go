@@ -55,3 +55,20 @@ func (s *Server) readinessCheckHandler(w http.ResponseWriter, r *http.Request) {
 		slog.Error("failed to encode readiness check response", "error", err)
 	}
 }
+
+func (s *Server) fetchGameCfg(w http.ResponseWriter, r *http.Request) {
+
+	gameCfg := world.GameCfg{
+		Grid: world.GridCfg{
+			Width: 40,
+			Hight: 22,
+		},
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(w).Encode(gameCfg); err != nil {
+		slog.Error("failed to get Game configuration", "error", err)
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+}
