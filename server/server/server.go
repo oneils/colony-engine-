@@ -21,7 +21,7 @@ func (s *Server) routes() chi.Router {
 		r.Get("/health", s.healthCheckHandler)
 		r.Get("/readiness", s.readinessCheckHandler)
 
-		router.Route("/npcs/state", func(r chi.Router) {
+		r.Route("/npcs/state", func(r chi.Router) {
 			r.Get("/", s.npscStateHandler)
 		})
 

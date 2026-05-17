@@ -22,7 +22,7 @@ func _fetch_state():
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
 
-	var error = http_request.request("http://localhost:8080/state")
+	var error = http_request.request("http://localhost:8080/npcs/state")
 	if error != OK:
 		push_error("Can't performe HTTP request")
 

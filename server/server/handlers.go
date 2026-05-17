@@ -27,7 +27,7 @@ func (s *Server) healthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	health := map[string]interface{}{
 		"status":    "ok",
 		"timestamp": time.Now().UTC().Format(time.RFC3339),
-		"service":   "budget-keeper",
+		"service":   "colony-engine",
 	}
 
 	w.Header().Set("Content-Type", "application/json")
