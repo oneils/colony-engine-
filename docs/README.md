@@ -56,7 +56,7 @@ NPC color encodes state (phases 1–4) or cluster node membership (phase 5).
 ## Roadmap
 
 ### Phase 0 — Project Skeleton
-**Status:** not started  
+**Status:** complete  
 **Duration:** ~1 day (one focused session)  
 **Tools:** Go `net/http`, Godot `HTTPRequest`, `_draw()`
 
@@ -248,4 +248,4 @@ cd server && go run main.go
 
 ---
 
-*Last updated: Phase 0 — not started. Next step: create `server/main.go` with a `/state` endpoint.*
+*Last updated: Phase 0 — complete. Next step: Phase 1, Week 1 — Array, Linked List, Stack, Queue.*

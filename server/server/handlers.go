@@ -5,6 +5,8 @@ import (
 	"log/slog"
 	"net/http"
 	"time"
+
+	"github.com/oneils/colony-engine/colony-engine-server/world"
 )
 
 func (s *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -18,9 +20,8 @@ func (s *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 func (s *Server) npscStateHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	resp := map[string]string{"status": "OK"}
-	json.NewEncoder(w).Encode(resp)
-
+	state := world.FetchState()
+	json.NewEncoder(w).Encode(state)
 }
 
 func (s *Server) healthCheckHandler(w http.ResponseWriter, r *http.Request) {

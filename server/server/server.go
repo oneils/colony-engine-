@@ -10,7 +10,8 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-type Server struct{}
+type Server struct {
+}
 
 func (s *Server) routes() chi.Router {
 	router := chi.NewRouter()
