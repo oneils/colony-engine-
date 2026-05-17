@@ -10,6 +10,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
+// Server handles HTTP routing and lifecycle for the colony engine API.
 type Server struct {
 }
 
@@ -32,6 +33,7 @@ func (s *Server) routes() chi.Router {
 	return router
 }
 
+// Run starts the HTTP server and blocks until the context is cancelled or a fatal error occurs.
 func (s *Server) Run(ctx context.Context, addr string) error {
 
 	httpServer := &http.Server{

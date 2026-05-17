@@ -239,11 +239,11 @@ colony-engine/
 ```bash
 # Go server
 cd server && go run main.go
-# → http://localhost:8080/state
+# → http://localhost:8080/npcs/state
 
 # Godot client
-# Open client/ in Godot 4, run main.tscn scene
-# NPC circle should move on the grid
+# Open colony-engine/ in Godot 4, run main_scene.tscn
+# NPC circles should move on the screen
 ```
 
 ---
