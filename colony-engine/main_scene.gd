@@ -1,10 +1,18 @@
 extends Node2D
 
+signal server_error(message: String)
+signal server_ok
+
 var current_positions = {}
 var target_positions = {}
 var http_request: HTTPRequest
 
 func _ready() -> void:
+	var error_display = preload("res://error_display.gd").new()
+	add_child(error_display)
+	server_error.connect(error_display.show_error)
+	server_ok.connect(error_display.hide_error)
+
 	http_request = HTTPRequest.new()
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
@@ -27,12 +35,19 @@ func _fetch_state():
 		push_error("Can't perform HTTP request")
 
 func _on_request_completed(result, response_code, headers, body):
-	if result == HTTPRequest.RESULT_SUCCESS and response_code == 200:
-		var json = JSON.parse_string(body.get_string_from_utf8())
-		if json and json.has("npcs"):
-			for npc in json["npcs"]:
-				var id = str(npc["id"])
-				target_positions[id] = Vector2(npc["position"]["x"], npc["position"]["y"])
+	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
+		server_error.emit("server unavailable (code %d)" % response_code)
+		return
+
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	if not json or not json.has("npcs"):
+		server_error.emit("invalid server response")
+		return
+
+	server_ok.emit()
+	for npc in json["npcs"]:
+		var id = str(npc["id"])
+		target_positions[id] = Vector2(npc["position"]["x"], npc["position"]["y"])
 
 	await get_tree().create_timer(0.1).timeout
 	_fetch_state()
