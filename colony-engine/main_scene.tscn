@@ -10,3 +10,4 @@ script = ExtResource("1_0f027")
 [node name="WorldGrid" parent="." unique_id=975609513 instance=ExtResource("2_gyfs4")]
 
 [node name="NPCLayer" parent="." unique_id=2083722596 instance=ExtResource("3_d5x1h")]
+metadata/_edit_group_ = true
