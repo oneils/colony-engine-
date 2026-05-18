@@ -1,6 +1,11 @@
 extends Node
 
-const SERVER_URL = "http://localhost:8080/npcs/state"
+# const SERVER_URL = "http://localhost:8080/npcs/state"
+
+
+var SERVER_URL: String
+const STATE_URL = "/npcs/state"
+
 
 signal state_updated(npcs: Array)
 signal request_failed(message: String)
@@ -9,13 +14,14 @@ signal request_succeeded()
 var http_request: HTTPRequest
 
 func _ready() -> void:
+	SERVER_URL = ProjectSettings.get_setting("application/config/server_url", "http://localhost:8080")
 	http_request = HTTPRequest.new()
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
 	_fetch_state()
 
 func _fetch_state() -> void:
-	var error = http_request.request(SERVER_URL)
+	var error = http_request.request(SERVER_URL + STATE_URL)
 	if error != OK:
 		request_failed.emit("can't reach server")
 

@@ -14,6 +14,9 @@ config/name="colony-engine"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+config/server_url="http://localhost:8088"
+
+
 [autoload]
 
 ServerClient="*uid://bd3qk3di4ccn"
