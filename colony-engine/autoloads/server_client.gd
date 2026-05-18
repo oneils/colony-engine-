@@ -28,10 +28,10 @@ func _ready() -> void:
 	_fetch_config()
 
 	# fetch the NPCs state
-	# http_request = HTTPRequest.new()
-	# add_child(http_request)
-	# http_request.request_completed.connect(_on_request_completed)
-	# _fetch_state()
+	http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(_on_request_completed)
+	_fetch_state()
 
 func _on_cfg_request_completed(result, response_code, _headers, body) -> void:
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:

@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	for id in current_positions:
 		var color = Color.from_hsv(float(id.hash() % 1000) / 1000.0, 0.7, 0.9)
-		draw_circle(current_positions[id], 15, color)
+		draw_circle(current_positions[id], 25, color)
 
 func _on_state_updated(npcs: Array) -> void:
 	for npc in npcs:
