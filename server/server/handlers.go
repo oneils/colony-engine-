@@ -60,8 +60,8 @@ func (s *Server) fetchGameCfg(w http.ResponseWriter, r *http.Request) {
 
 	gameCfg := world.GameCfg{
 		Grid: world.GridCfg{
-			Width: 40,
-			Hight: 22,
+			Width: 17,
+			Hight: 8,
 		},
 	}
 

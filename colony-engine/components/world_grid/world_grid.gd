@@ -15,8 +15,8 @@ extends Node2D
 
 
 # walls padding vertically and horizontally
-const WALLS_PADDING = 6
-const CELL_PADDING = 3
+const WALLS_PADDING = 50
+const CELL_PADDING = 6
 
 var _config: GridConfig
 
@@ -42,13 +42,11 @@ func _draw():
 	var width = (screen_size.x  - 2 * WALLS_PADDING -  (_config.width - 1) * CELL_PADDING) / _config.width
 	var height = (screen_size.y - 2 * WALLS_PADDING - (_config.height - 1) * CELL_PADDING) / _config.height
 
-	var pos_x = WALLS_PADDING
-	var pos_y = WALLS_PADDING
-	for w in  range(_config.width):
-		pos_y = WALLS_PADDING 
-		
-		for h in range(_config.height):
-			draw_rect(Rect2(pos_x, pos_y, width, height), Color.html("#252d3d"), true, 1, false)
-			pos_y = pos_y + height + CELL_PADDING
-		pos_x = pos_x + width + CELL_PADDING
+	var cell_size = Vector2(width, height)
+	var offset = Vector2(WALLS_PADDING, WALLS_PADDING)
+	var step = cell_size + Vector2(CELL_PADDING, CELL_PADDING)
 
+	for x in range(_config.width):
+		for y in _config.height:
+			var pos = offset + Vector2(x, y) * step
+			draw_rect(Rect2(pos, cell_size), Color.html("#252d3d"))
